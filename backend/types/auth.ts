@@ -6,4 +6,3 @@ export interface AuthenticatedRequest extends Request {
     email: string;
   };
 }
-
