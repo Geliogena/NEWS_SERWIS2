@@ -1,0 +1,24 @@
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 16px;
+  
+    &__title {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+  
+    &__nav {
+      margin-top: 8px;
+  
+      .header__link {
+        color: white;
+        margin-right: 16px;
+        text-decoration: none;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }

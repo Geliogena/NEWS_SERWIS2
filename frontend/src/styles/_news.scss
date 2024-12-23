@@ -1,0 +1,34 @@
+@use 'sass:color';
+@use 'variables' as vars;
+.news-card {
+    border: 1px solid vars.$secondary-color;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    transition: transform 0.2s;
+  
+    &:hover {
+      transform: scale(1.02);
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+      color: vars.$primary-color;
+      margin-bottom: 8px;
+    }
+  
+    .news-snippet {
+        display: -webkit-box; 
+        -webkit-box-orient: vertical; 
+        overflow: hidden; 
+        -webkit-line-clamp: 3; 
+        line-clamp: 3; 
+      }
+  
+    small {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.875rem;
+      color: color.adjust(vars.$secondary-color, $lightness: 20%);
+    }
+  }

@@ -1,0 +1,44 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  NODE_ENV: production
+  VITE_BACKEND_URL: http://localhost:8000
+  NETLIFY_AUTH_TOKEN: $NETLIFY_AUTH_TOKEN
+  NETLIFY_SITE_ID: $NETLIFY_SITE_ID
+
+test:
+  stage: test
+  image: node:20
+  before_script:
+    - npm install
+  script:
+    - npm run test
+  artifacts:
+    paths:
+      - test-results.xml
+    expire_in: 1 week
+
+build:
+  stage: build
+  image: node:20
+  before_script:
+    - npm install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+deploy:
+  stage: deploy
+  image: node:20
+  before_script:
+    - npm install -g netlify-cli
+  script:
+    - netlify deploy --prod --dir=dist --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+  only:
+    - main
